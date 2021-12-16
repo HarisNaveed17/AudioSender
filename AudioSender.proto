@@ -1,0 +1,20 @@
+syntax='proto3';
+
+service AudioSender {
+
+rpc SendAudio(stream Audio) returns (Response) {}
+
+}
+
+message Audio {
+
+bytes audio = 1;
+string ID = 2;
+
+}
+
+message Response {
+
+string ack = 1;
+
+}
