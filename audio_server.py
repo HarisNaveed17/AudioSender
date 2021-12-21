@@ -4,21 +4,23 @@ import AudioSender_pb2 as service
 import AudioSender_pb2_grpc as rpc
 import base64
 import wave
+import numpy as np
+from scipy.io.wavfile import write
 
 MAX_MESSAGE_LENGTH = 104857600
 
 
-def save_audio(encoded_audio, ID):
+def save_audio(encoded_audio, I_d, sr):
     decoded_audio = base64.b64decode(encoded_audio)
-    with wave.open(ID, 'wb') as decoded_file:
-        decoded_file.writeframes(decoded_audio)
+    decoded_arr = np.frombuffer(decoded_audio, dtype='int16')
+    write(I_d, sr, decoded_arr)
     return 1
 
 
 class AudioSenderServicer(rpc.AudioSenderServicer):
     def SendAudio(self, request_iterator, context):
         for request in request_iterator:
-            pt = save_audio(encoded_audio=request.audio, ID=request.ID)
+            pt = save_audio(encoded_audio=request.audio, I_d=request.ID, sr=request.samplerate)
             if pt == 1:
                 continue
             else:
