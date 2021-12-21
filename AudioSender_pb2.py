@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x11\x41udioSender.proto\"\"\n\x05\x41udio\x12\r\n\x05\x61udio\x18\x01 \x01(\x0c\x12\n\n\x02ID\x18\x02 \x01(\t\"\x17\n\x08Response\x12\x0b\n\x03\x61\x63k\x18\x01 \x01(\t21\n\x0b\x41udioSender\x12\"\n\tSendAudio\x12\x06.Audio\x1a\t.Response\"\x00(\x01\x62\x06proto3'
+  serialized_pb=b'\n\x11\x41udioSender.proto\"6\n\x05\x41udio\x12\r\n\x05\x61udio\x18\x01 \x01(\x0c\x12\n\n\x02ID\x18\x02 \x01(\t\x12\x12\n\nsamplerate\x18\x03 \x01(\x05\"\x17\n\x08Response\x12\x0b\n\x03\x61\x63k\x18\x01 \x01(\t21\n\x0b\x41udioSender\x12\"\n\tSendAudio\x12\x06.Audio\x1a\t.Response\"\x00(\x01\x62\x06proto3'
 )
 
 
@@ -47,6 +47,13 @@ _AUDIO = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='samplerate', full_name='Audio.samplerate', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -60,7 +67,7 @@ _AUDIO = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=21,
-  serialized_end=55,
+  serialized_end=75,
 )
 
 
@@ -91,8 +98,8 @@ _RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=57,
-  serialized_end=80,
+  serialized_start=77,
+  serialized_end=100,
 )
 
 DESCRIPTOR.message_types_by_name['Audio'] = _AUDIO
@@ -122,8 +129,8 @@ _AUDIOSENDER = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=82,
-  serialized_end=131,
+  serialized_start=102,
+  serialized_end=151,
   methods=[
   _descriptor.MethodDescriptor(
     name='SendAudio',
